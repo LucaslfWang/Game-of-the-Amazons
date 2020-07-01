@@ -42,14 +42,14 @@ struct coordinate
 	coordinate(int a, int b, int c) :x(a), y(b), num(c) {}
 }coor, tmp, q[110];
 
-void evaluationfunction::kingmovesearch()//µ½Ä³µã×îÉÙĞè¾­¹ı¼¸¸ö¸ñµã
+void evaluationfunction::kingmovesearch()//åˆ°æŸç‚¹æœ€å°‘éœ€ç»è¿‡å‡ ä¸ªæ ¼ç‚¹
 {
 	int i, j, k, l, u, v;
 	for (i = 1; i < 11; ++i)
 	{
 		for (j = 1; j < 11; ++j)
 		{
-			kingmovewhite[i][j] = 0;//³õÊ¼»¯Îª0
+			kingmovewhite[i][j] = 0;//åˆå§‹åŒ–ä¸º0
 			kingmoveblack[i][j] = 0;
 		}
 	}
@@ -128,7 +128,7 @@ void evaluationfunction::copy(BYTE position[][12])
 	}
 }
 
-void evaluationfunction::queenmovesearch()//µ½Ä³µãµÄ×îĞ¡Â·¾¶
+void evaluationfunction::queenmovesearch()//åˆ°æŸç‚¹çš„æœ€å°è·¯å¾„
 {
 	int i, j, k, l, u, v;
 	for (i = 1; i < 11; ++i)
@@ -279,7 +279,7 @@ void evaluationfunction::t1account()
 				if (queenmovewhite[i][j] == queenmoveblack[i][j] != 0)
 				{
 					t1 = t1 + 0.1;
-				}//k=0.1£¬¿ÉĞŞ¸Ä²ÎÊı
+				}//k=0.1ï¼Œå¯ä¿®æ”¹å‚æ•°
 
 				if (queenmovewhite[i][j]<queenmoveblack[i][j])
 				{
@@ -559,7 +559,7 @@ void evaluationfunction::aaccount()
 }
 
 int ec = 0;
-double evaluationfunction::evaluation(BYTE position[][12], int side)//ÇëĞŞ¸Ä´Ë´¦´úÂë
+double evaluationfunction::evaluation(BYTE position[][12], int side)//è¯·ä¿®æ”¹æ­¤å¤„ä»£ç 
 {
 	ec++;
 	double value;
@@ -569,17 +569,40 @@ double evaluationfunction::evaluation(BYTE position[][12], int side)//ÇëĞŞ¸Ä´Ë´¦
 	kingmovesearch();
 	queenmovesearch();
 	mobilitysearch();
-	t1account();//queen×ß·¨µÄÁìµØÊıÁ¿
-	t2account();//king×ß·¨µÄÁìµØÊıÁ¿
-	c1account();//queen×ß·¨µÄµØÀíÎ»ÖÃÓÅÁÓ
-	c2account();//king×ß·¨µÄµØÀíÎ»ÖÃÓÅÁÓ
-	waccount();
-	double a, b, c;//²ÎÊı
-	a = (5 / (w + 5));
-	b = (w / (w + 20));
-	c = (1 - (a + b)) / 2;
-	
-	value = a*t1 + b*(t2 / 2) + c*((c1 + c2) / 2);    //2018-2019Ğ£Èü ÇëĞŞ¸Ä´Ë´¦µÄÖµ ³ı·ÇÄãÔ¸ÒâÓÃÕâÃ´²ËµÄ¶«Î÷~
+	t1account();//queenèµ°æ³•çš„é¢†åœ°æ•°é‡
+	t2account();//kingèµ°æ³•çš„é¢†åœ°æ•°é‡
+	c1account();//queenèµ°æ³•çš„åœ°ç†ä½ç½®ä¼˜åŠ£
+	c2account();//kingèµ°æ³•çš„åœ°ç†ä½ç½®ä¼˜åŠ£
+	aaccount();
+	double a, b, c, d, e;//å‚æ•°
+	double ma1,ma2;
+
+	for(int i=0;i<4;i++)
+	{
+		ma1+=awhite[i];
+	}
+	for(int i=0;i<4;i++)
+	{
+		ma2+=ablack[i];
+	}
+	ma = ma1 - ma2;
+
+	if(ec < 17)
+	{
+		a = 2 * (32 + 2.0 * ec /2);
+		b = 1 * (32 - 1.8 * ec /2);
+		c = 1 * (32 - 1.8 * ec /2);
+		d = 2 * (32 - 2.0 * ec /2);
+		e = 0.5 * (32 - 1.8 * ec /2);
+	}
+	else
+	{
+		a = 5;
+		b = c = d = e = 0;
+	}
+
+
+	value = a*t1 + b*t2 + c*c1 + d*c2 + e*ma;    
 
 	if (side == 0)
 		return value;
