@@ -15,6 +15,7 @@
     3.当某方完成某次移动后，对方4个棋子均不能再移动时，对方将输掉比赛；
     4．每次开局位于棋盘下方的玩家先手；
     5．整个比赛中双方均不能吃掉对方或己方的棋子或障碍。
+    
 ![image](https://github.com/LucaslfWang/Game-of-the-Amazons/assets/67529039/53ca1b15-a69c-4cb3-ad45-df160a96713b)
 
 ## 项目结构
