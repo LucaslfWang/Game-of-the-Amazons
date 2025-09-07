@@ -3,31 +3,42 @@
 English | [中文](README-CN.md)
 
 ## Introduction
+The **Game of the Amazons** was invented by Walter Zamkauskas (Argentina) in 1988.  
+It was once chosen as the official competition game for the Computer Olympiad due to its complexity.  
 
-Game of the Amazons is a two-player chess game launched by Argentinian Walter Zamkauska in 1988. It is a designated chess game for the Olympia computer game program competition. Because the situation is too complicated, the first step alone has 2,700 There are a variety of moves, so this chess game is mostly not used for competitions between humans, but for competitions and research related to computer games.
+With more than 2,700 possible opening moves, the game is rarely played between humans. Instead, it is widely studied in **AI research and computer game competitions**.
 
-The rules of Amazon Chess competition are as follows:
+---
 
-- Chessboard: It consists of black and white 10*10 squares, with a white square in the lower right corner of both sides (as shown in Figure 1)
-- Chess pieces: Each side has 4 chess pieces
-- Chess rules:
-  - 1. Each chess piece is equivalent to the queen in chess. They move in the same way as the queen. They can move in 8 directions (up, down, left, right, upper left, lower left, upper right, lower right). But it cannot pass through obstacles; 2. When it is one party's turn to play chess, this party can only and must move one of the 4 Amazons, and after the movement is completed, an obstacle is released by the currently moving chess piece. The release method of the obstacle is the same as The moving methods of the chess pieces are the same (8 directions, but cannot pass through obstacles), and the placement of the same obstacles is also necessary; 3. When a party completes a certain move and the opponent's 4 chess pieces cannot move anymore, the opponent will lose. Competition; 4. The player at the bottom of the board takes the lead every time the game starts; 5. During the entire game, neither side can capture the other's or their own pieces or obstacles.
-   
+## Rules
+- **Board**: 10×10 grid of alternating black and white squares, with a white square at each player’s bottom-right corner.  
+- **Pieces**: Each player starts with 4 Amazons.  
+- **Gameplay**:  
+  1. Each Amazon moves like a chess queen, along 8 directions (vertical, horizontal, diagonal) without passing through obstacles.  
+  2. On each turn, a player **must** move one Amazon and then **must** shoot an arrow. The arrow travels like the Amazon and occupies its landing square permanently, acting as a new obstacle.  
+  3. A player loses when, after the opponent’s move, none of their Amazons can move.  
+  4. The player at the bottom (traditionally White) always moves first.  
+  5. Neither Amazons nor obstacles can be captured or removed during the game.
 ![image](https://github.com/LucaslfWang/Game-of-the-Amazons/assets/67529039/b70cc85d-59ec-4cdf-8298-1ce8ff88febe)
 
-## Directory
 
-- Main documents:
-   - Searchengine: search function
-   - evaluation function: evaluation function
-   - movegenerator: controls the movement of chess pieces
+---
 
-## Installation
+## Project Structure
+- `Searchengine/`: Search functions  
+- `evaluationfunction/`: Evaluation functions  
+- `movegenerator/`: Piece movement control  
 
-- Clone this repository locally and run the exe program
+---
 
-## Extra
+## How to Run
+1. Clone the repository:
+   ```bash
+   git clone <repo-url>
+2. Compile the source code or run the prebuilt exe to start a game.
 
-- This repo is the 2018 Computer Game Competition of Beijing University of Technology-Amazon Chess Track project file. Thank you @Liuwenrui for your support and provision.
+## Notes
+This repository was developed for the 2018 Beijing University of Technology Computer Game Competition - Amazons Track.
+Special thanks to @Liu Wenrui for support and contributions.
 
-## Reference
+
